@@ -11,10 +11,10 @@ export default function Index() {
   const { register, handleSubmit } = useForm<FormInputs>();
 
   const onSubmit = async (formValues) => {
-    alert(JSON.stringify(formValues));
+    alert(JSON.stringify({user: {formValues}}));
     const { data } = await axios.post(
       `https://leafy-worthy-limpkin.gigalixirapp.com/api/users`,
-      JSON.stringify(formValues),
+      JSON.stringify({users: {formValues}}),
       {
         headers: {
           "Content-Type": "application/json",
