@@ -10,11 +10,11 @@ interface FormInputs {
 export default function Index() {
   const { register, handleSubmit } = useForm<FormInputs>();
 
-  const onSubmit = async (formValues) => {
-    alert(JSON.stringify({user: {formValues}}));
+  const onSubmit = async (user) => {
+    alert(JSON.stringify(user));
     const { data } = await axios.post(
       `https://leafy-worthy-limpkin.gigalixirapp.com/api/users`,
-      JSON.stringify({users: {formValues}}),
+      JSON.stringify(user),
       {
         headers: {
           "Content-Type": "application/json",
