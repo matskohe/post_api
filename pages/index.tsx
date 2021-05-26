@@ -13,7 +13,7 @@ export default function Index() {
   const onSubmit = async (form) => {
     alert(JSON.stringify({user:form}));
     const { data } = await axios.post(
-      `http://localhost:4000/api/users`,
+      `https://leafy-worthy-limpkin.gigalixirapp.com/api/users`,
       JSON.stringify({user:form}),
       {
         headers: {
