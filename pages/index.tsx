@@ -1,17 +1,31 @@
-import { useForm } from 'react-hook-form'
-import { PickupAPI } from '../lib/api/pickups'
+import { useForm } from "react-hook-form";
+import axios from "axios";
+// import { PickupAPI } from '../lib/api/pickups'
 
 interface FormInputs {
-  name: string
-  email: string
+  name: string;
+  email: string;
 }
 
-export default function Index(){
-  const { register, handleSubmit } = useForm<FormInputs>()
-  const onSubmit = async(formValues) => {
-    alert(JSON.stringify(formValues))
-    await PickupAPI.create(formValues)
-  }
+export default function Index() {
+  const { register, handleSubmit } = useForm<FormInputs>();
+
+  const onSubmit = async (formValues) => {
+    alert(JSON.stringify(formValues));
+    const { data } = await axios.post(
+      `https://leafy-worthy-limpkin.gigalixirapp.com/api/users`,
+      JSON.stringify(formValues),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return {
+      data,
+    };
+  };
+
   return (
     <div>
       <div>
@@ -22,6 +36,5 @@ export default function Index(){
         </form>
       </div>
     </div>
-  )
+  );
 }
-
